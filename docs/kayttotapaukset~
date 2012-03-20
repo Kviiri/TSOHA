@@ -1,0 +1,22 @@
+Pääsivu
+Kaikki käyttäjäryhmät
+
+Pääsivulla on näytettynä suosittuja kyselyitä tuloksineen. Jokaisen kyselyn yhteydessä on linkki kyselyn äänestyssivulle. Pääsivulta on linkki myös sivulle, jossa listataan kaikki kyselyt otsikon perusteella.
+
+
+Listaussivu
+Kaikki käyttäjäryhmät
+
+Listaussivulla on listattuna kaikki palvelussa olevat kyselyt. Listaussivu näyttää kyselyt tiiviimmässä formaatissa kuin pääsivu. Jokainen otsikko sisältää linkin kyselyn tulos- ja äänestyssivulle. Listaussivulta pääsee myös takaisin pääsivulle.
+
+
+Tulos- ja äänestyssivu
+Kaikki käyttäjäryhmät
+
+Kysely tietoineen ja tuloksineen esitellään käyttäjälle tuoreimman vastauksen mukaan järjestettynä. Kyselystä kerrotaan otsikko sekä alkamis- ja päättymisaika. Kyselyn tekijä ilmoitetaan myös, ellei kyselyn tekijä jätä kyselyä anonyymisti (tällöin tekijä näytetään vain Admin-käyttäjille). Kyselyn tietojen jälkeen sisäänkirjautuneille käyttäjille näytetään äänestyslomake: vastausvaihtoehdot (checkbox tai radiobutton) sekä valinta, haluaako käyttäjä äänensä olevan julkinen, suljettu vai piilotettu. Äänestyslomakkeen alapuolella on käänteisessä kronologisessa järjestyksessä kyselylle annetut ei-piilotetut äänet. Suljetuista äänistä näytetään vain äänen antaja, julkisista myös hänen valintansa. Ylläpitäjille tarjotaan mahdollisuus sulkea ja poistaa kysely esimerkiksi sääntörikkomusten takia.
+
+
+Oma sivu
+Sisäänkirjautuneet käyttäjät
+
+Jokaisella käyttäjällä on Oma sivu, joka sisältää linkit kaikkiin käyttäjän vastaamiin ja luomiin kyselyihin. Tämä helpottaa kyselyiden seuraamista.
