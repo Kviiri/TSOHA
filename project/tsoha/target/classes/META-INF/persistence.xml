@@ -3,6 +3,9 @@
   <persistence-unit name="persistenceUnitDev" transaction-type="RESOURCE_LOCAL">
     <class>wad.spring.domain.Role</class>
     <class>wad.spring.domain.User</class>
+    <class>wad.spring.domain.Poll</class>
+    <class>wad.spring.domain.PollOption</class>
+    <class>wad.spring.domain.Vote</class>
     <properties>
       <property name="showSql" value="true"/>
       <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
