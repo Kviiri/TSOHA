@@ -1,4 +1,4 @@
-package wad.spring.service;
+package spring.service;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 

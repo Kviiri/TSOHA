@@ -1,4 +1,4 @@
-package wad.spring.controller;
+package spring.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import wad.spring.domain.Role;
-import wad.spring.domain.User;
-import wad.spring.repository.UserRepository;
-import wad.spring.service.SecureService;
+import spring.domain.Role;
+import spring.domain.User;
+import spring.repository.UserRepository;
+import spring.service.SecureService;
 
 @Controller
 public class HomeController {

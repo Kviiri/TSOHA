@@ -1,13 +1,13 @@
-package wad.spring.service;
+package spring.service;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import wad.spring.domain.Role;
-import wad.spring.domain.User;
-import wad.spring.repository.UserRepository;
+import spring.domain.Role;
+import spring.domain.User;
+import spring.repository.UserRepository;
 
 @Service
 public class SecureServiceImpl implements SecureService {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence                                             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="persistenceUnitDev" transaction-type="RESOURCE_LOCAL">
-    <class>wad.spring.domain.Role</class>
-    <class>wad.spring.domain.User</class>
-    <class>wad.spring.domain.Poll</class>
-    <class>wad.spring.domain.PollOption</class>
-    <class>wad.spring.domain.Vote</class>
+    <class>spring.domain.Poll</class>
+    <class>spring.domain.PollOption</class>
+    <class>spring.domain.Role</class>
+    <class>spring.domain.User</class>
+    <class>spring.domain.Vote</class>
     <properties>
       <property name="showSql" value="true"/>
       <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>

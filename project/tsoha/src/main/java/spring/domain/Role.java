@@ -1,4 +1,4 @@
-package wad.spring.domain;
+package spring.domain;
 
 import java.io.Serializable;
 import java.util.List;

@@ -30,7 +30,7 @@
     
     
     <!-- Sovelluksemme lähdekooditiedostot sijaitsevat pakkauksessa wad tai sen alipakkauksissa-->
-    <context:component-scan base-package="wad" />
+    <context:component-scan base-package="spring" />
 
     <!-- Käytetään Spring MVC:tä annotaatioiden avulla -->
     <mvc:annotation-driven /> 
