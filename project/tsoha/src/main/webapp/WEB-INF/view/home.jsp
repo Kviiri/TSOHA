@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Tänne saa päästä kuka tahansa.</h1>
-        <p><a href="student/home">Käyttäjille ekslusiivista sisältöä</a></p>
+        <p><a href="user/home">Käyttäjille ekslusiivista sisältöä</a></p>
         <p><a href="admin/home">Admin-paneeli</a></p>
             
         <p><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></p>

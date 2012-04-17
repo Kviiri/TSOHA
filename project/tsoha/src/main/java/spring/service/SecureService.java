@@ -4,8 +4,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 public interface SecureService {
 
-    @PreAuthorize("hasRole('lecturer')")
-    public void executeOnlyIfAuthenticatedAsLecturer();
+    @PreAuthorize("hasRole('admin')")
+    public void executeOnlyIfAuthenticatedAsAdmin();
 
     @PreAuthorize("isAuthenticated()")
     public void executeOnlyIfAuthenticated();

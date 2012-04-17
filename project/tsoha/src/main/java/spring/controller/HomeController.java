@@ -32,13 +32,13 @@ public class HomeController {
         List<User> normiuserit = new ArrayList<User>();
         for (User u : users) {
             for (Role r : u.getRoles()) {
-                if (r.getRolename().equals("student")) {
+                if (r.getRolename().equals("user")) {
                     normiuserit.add(u);
                     break;
                 }
             }
         }
-        model.addAttribute("students", normiuserit);
+        model.addAttribute("user", normiuserit);
         return "home";
     }
 
@@ -50,7 +50,7 @@ public class HomeController {
 
     @RequestMapping(value = "/must-be-admin")
     public String mustAdmin() {
-        secureService.executeOnlyIfAuthenticatedAsLecturer();
+        secureService.executeOnlyIfAuthenticatedAsAdmin();
         return "home";
     }
     @RequestMapping(value = "*")

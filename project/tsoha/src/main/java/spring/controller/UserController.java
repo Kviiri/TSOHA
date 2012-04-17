@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import spring.repository.UserRepository;
 
 @Controller
-@RequestMapping("/student")
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -17,7 +17,7 @@ public class UserController {
 
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String home(Model model, Principal principal) {
-        model.addAttribute("student", userRepo.findByUsername(principal.getName()));
-        return "student/home";
+        model.addAttribute("user", userRepo.findByUsername(principal.getName()));
+        return "user/home";
     }
 }

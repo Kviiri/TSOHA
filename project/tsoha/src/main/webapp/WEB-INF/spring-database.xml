@@ -21,7 +21,7 @@
            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <!-- Sovelluksen repository-luokat (DAO-luokat) sijaitsevat pakkauksen wad alla -->
-    <jpa:repositories base-package="wad.spring.repository" />
+    <jpa:repositories base-package="spring.repository" />
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="packagesToScan" value="spring.domain"/>

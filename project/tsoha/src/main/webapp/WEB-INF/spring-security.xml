@@ -10,8 +10,8 @@
 
     <!-- osoitteiden rajoitus -->
     <http use-expressions="true">
-        <intercept-url pattern="/admin/**" access="hasRole('lecturer') or hasRole('assistant')" />
-        <intercept-url pattern="/student/**" access="hasRole('student')" />
+        <intercept-url pattern="/admin/**" access="hasRole('admin')" />
+        <intercept-url pattern="/user/**" access="hasRole('user')" /> <!-- Admin ilman user-oikeuksia? -->
         <intercept-url pattern="/**" access="permitAll" />
         
         <!-- huom! kun teet sovellusta tuotantokäyttöä varten, permitAll-oletus ei ole hyvä idea! /** -->
@@ -24,6 +24,6 @@
     
     <!-- käyttäjät kannasta -->
     <authentication-manager>
-        <authentication-provider user-service-ref="spring.service.PollUserDetailsService" />
+        <authentication-provider user-service-ref="pollUserDetailsService" />
     </authentication-manager>
 </beans:beans>

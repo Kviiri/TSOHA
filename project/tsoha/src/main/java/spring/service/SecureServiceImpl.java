@@ -16,7 +16,7 @@ public class SecureServiceImpl implements SecureService {
     private UserRepository userRepository;
 
     @Override
-    public void executeOnlyIfAuthenticatedAsLecturer() {
+    public void executeOnlyIfAuthenticatedAsAdmin() {
         System.out.println("The guy must be an admin! Note that this was configured in the interface.");
     }
 
@@ -43,10 +43,10 @@ public class SecureServiceImpl implements SecureService {
         List<Role> roles = new ArrayList();
 
         Role role = new Role();
-        role.setRolename("lecturer");
+        role.setRolename("admin");
         roles.add(role);
         role = new Role();
-        role.setRolename("assistant");
+        role.setRolename("user");
         roles.add(role);
         
         matti.setRoles(roles);
