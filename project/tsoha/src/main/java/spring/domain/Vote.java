@@ -17,7 +17,7 @@ public class Vote implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private long id;
+    private Long id;
     
     @ManyToOne
     private User user;
@@ -28,11 +28,11 @@ public class Vote implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date voteTime;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

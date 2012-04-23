@@ -16,9 +16,6 @@ public class PollOption implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private long id;
-            
-    @ManyToOne
-    private Poll poll;
     
     private String optionDescription;
 
@@ -38,20 +35,16 @@ public class PollOption implements Serializable {
         this.optionDescription = optionDescription;
     }
 
-    public Poll getPoll() {
-        return poll;
-    }
-
-    public void setPoll(Poll poll) {
-        this.poll = poll;
-    }
-
     public List<Vote> getVotes() {
         return votes;
     }
 
     public void setVotes(List<Vote> votes) {
         this.votes = votes;
+    }
+    
+    public void addVote(Vote v) {
+        votes.add(v);
     }
     
     

@@ -18,4 +18,7 @@
             Salasana: <input type="text" name="j_password" />
             <input type="submit" value="Lähetä" />
         </form>
+    <body>
+        <i>Etkö ole jäsen? Rekisteröidy niinkuin olisi jo!</i>
+    </body>
 </html>
