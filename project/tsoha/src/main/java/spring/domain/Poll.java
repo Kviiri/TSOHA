@@ -12,7 +12,7 @@ import javax.persistence.*;
  */
 @Entity(name = "POLLS")
 public class Poll implements Serializable {
-    @OneToMany
+    @OneToMany(cascade={CascadeType.MERGE, CascadeType.PERSIST})
     private List<PollOption> pollOptions;
     
     @Id
@@ -75,6 +75,14 @@ public class Poll implements Serializable {
 
     public void setPollOptions(List<PollOption> pollOptions) {
         this.pollOptions = pollOptions;
+    }
+    
+    public int getNumOfAnswers() {
+        int answers = 0;
+        for(PollOption p : pollOptions) {
+            answers += p.getVotes().size();
+        }
+        return answers;
     }
     
     

@@ -9,15 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Uusi kysely/title>
+        <title>Uusi kysely</title>
     </head>
     <body>
         <h1><form action="addpoll" method="POST">
             Otsikko: <input type="text" name="PollQuestion" /> <br />
-            Vastausvaihtoehto 1: <input type="text" name="option1" />
-            Vastausvaihtoehto 2: <input type="text" name="option2" />
-            Vastausvaihtoehto 3: <input type="text" name="option3" />
-            Vastausvaihtoehto 4: <input type="text" name="option4" />
+            Vastausvaihtoehto 1: <input type="text" name="pollOption1" /> <br />
+            Vastausvaihtoehto 2: <input type="text" name="pollOption2" /> <br />
+            Vastausvaihtoehto 3: <input type="text" name="pollOption3" /> <br />
+            Vastausvaihtoehto 4: <input type="text" name="pollOption4" /> <br />
             <input type="submit" value="Lähetä" />
         </form></h1>
     </body>

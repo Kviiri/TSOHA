@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import spring.domain.Role;
 import spring.domain.User;
 import spring.repository.UserRepository;
+import spring.service.PollService;
 import spring.service.SecureService;
 
 @Controller
@@ -20,6 +21,9 @@ public class HomeController {
     UserRepository urepo;
     @Autowired
     SecureService secureService;
+    @Autowired
+    PollService pServ;
+    
     @RequestMapping(value = "login", method=RequestMethod.GET)
     public String login() {
         return "login";
@@ -53,6 +57,13 @@ public class HomeController {
         secureService.executeOnlyIfAuthenticatedAsAdmin();
         return "home";
     }
+    
+    @RequestMapping(value = "listpolls")
+    public String listPolls(Model model) {
+        model.addAttribute("polls", pServ.list());
+        return "listing/listpolls";
+    }
+    
     @RequestMapping(value = "*")
     public String defaultForwardToHome() {
         return "redirect:/home";

@@ -14,19 +14,21 @@ import spring.domain.Role;
 import spring.domain.User;
 import spring.domain.form.CreateUserForm;
 import spring.repository.UserRepository;
+import spring.service.PollUserDetailsService;
 
 @Controller
 public class CreateUserController {
-
+    /*@Autowired
+    PollUserDetailsService userv;*/
     @Autowired
-    UserRepository userRepo;
+    UserRepository urepo;
 
-    @RequestMapping(value = "create", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String registerForm(Model model) {
         return "register";
     }
     
-    @RequestMapping(value = "create", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String addUser(@Valid @ModelAttribute CreateUserForm userForm, BindingResult result) {
         if (result.hasErrors()) {
             return "home";
@@ -39,7 +41,7 @@ public class CreateUserController {
         List<Role> list = new ArrayList<Role>();
         list.add(role);
         user.setRoles(list);
-        userRepo.save(user);
+        urepo.save(user);
         return "redirect:/home";
     }
 }

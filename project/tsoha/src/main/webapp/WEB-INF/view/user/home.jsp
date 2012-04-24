@@ -8,8 +8,9 @@
         <title>Bienvenue</title>
     </head>
     <body>
-        <h1>Peruskäyttäjä</h1>
-        <a href="${pageContext.request.contextPath}/home">Retourner</a>
+        <h1>Tervetuloa</h1>
+        <a href="${pageContext.request.contextPath}/user/addpoll">Lisää uusi kysely</a> <br />
+        <a href="${pageContext.request.contextPath}/home">Takaisin etusivulle</a>
         <p><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></p>
        
     </body>

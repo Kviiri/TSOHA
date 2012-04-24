@@ -47,5 +47,7 @@ public class PollOption implements Serializable {
         votes.add(v);
     }
     
-    
+    public int getNumOfVotes() {
+        return votes.size();
+    }
 }

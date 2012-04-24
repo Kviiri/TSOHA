@@ -8,9 +8,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Tänne saa päästä kuka tahansa.</h1>
-        <p><a href="user/home">Käyttäjille ekslusiivista sisältöä</a></p>
-        <p><a href="admin/home">Admin-paneeli</a></p>
+        <h1>Tervetuloa Pollauspalveluun.</h1>
+        <p><a href="listpolls">Katso kyselyitä</a></p>
+        
+        <p><a href="user/home">Käyttäjän sivu</a></p>
+        <p><a href="admin/home">Ylläpitäjän sivu</a></p>
             
         <p><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></p>
     </body>

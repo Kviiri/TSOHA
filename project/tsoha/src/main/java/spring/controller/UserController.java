@@ -28,16 +28,16 @@ public class UserController {
 
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String home(Model model, Principal principal) {
-        model.addAttribute("user", uServ.loadUserByUsername(principal.getName()));
+        //model.addAttribute("user", uServ.loadUserByUsername(principal.getName()));
         return "user/home";
     }
     
-    @RequestMapping(value = "addPoll", method = RequestMethod.GET) 
+    @RequestMapping(value = "addpoll", method = RequestMethod.GET) 
     public String showPollForm(Model model) {
         return "user/addpoll";
     }
     
-    @RequestMapping(value = "addPoll", method = RequestMethod.POST) 
+    @RequestMapping(value = "addpoll", method = RequestMethod.POST) 
     public String createPoll(@ModelAttribute QuickAndDirtyCreatePollForm cpf) {
         List<PollOption> options = new ArrayList<PollOption>();
         PollOption p1 = new PollOption();
@@ -57,7 +57,8 @@ public class UserController {
         
         Poll p = new Poll();
         p.setPollOptions(options);
+        p.setTitle(cpf.getPollQuestion());
         pServ.saveOrUpdate(p, p.getId());
-        return "user/home";
+        return "redirect:home";
     }
 }
