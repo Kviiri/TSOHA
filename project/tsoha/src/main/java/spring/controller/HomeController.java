@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -70,13 +71,15 @@ public class HomeController {
     
     @RequestMapping(value = "createuser", method = RequestMethod.GET)
     public String registerForm(Model model) {
+        model.addAttribute("userForm", new CreateUserForm());
         return "register";
     }
     
     @RequestMapping(value = "createuser", method = RequestMethod.POST)
-    public String addUser(@Valid @ModelAttribute CreateUserForm userForm, BindingResult result) {
+    public String addUser(@Valid @ModelAttribute CreateUserForm userForm, Model model, BindingResult result) {
+        result = userForm.validateForm(result);
         if (result.hasErrors()) {
-            return "home";
+            return "register";
         }
         User user = new User();
         user.setName(userForm.getName());
@@ -90,7 +93,7 @@ public class HomeController {
         return "redirect:/home";
     }
     
-    @RequestMapping(value = "createuser")
+    @RequestMapping(value="*")
     public String defaultForwardToHome() {
         return "redirect:/home";
     }
