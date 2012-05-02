@@ -76,7 +76,7 @@ public class HomeController {
     }
     
     @RequestMapping(value = "createuser", method = RequestMethod.POST)
-    public String addUser(@Valid @ModelAttribute CreateUserForm userForm, Model model, BindingResult result) {
+    public String addUser(@Valid @ModelAttribute("userForm") CreateUserForm userForm, BindingResult result) {
         result = userForm.validateForm(result);
         if (result.hasErrors()) {
             return "register";
