@@ -2,6 +2,7 @@ package spring.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,7 +68,7 @@ public class HomeController {
         return "listing/listpolls";
     }
     
-    @RequestMapping(value = "*", method = RequestMethod.GET)
+    @RequestMapping(value = "createuser", method = RequestMethod.GET)
     public String registerForm(Model model) {
         return "register";
     }
