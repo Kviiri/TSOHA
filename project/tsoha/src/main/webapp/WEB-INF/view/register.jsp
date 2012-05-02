@@ -13,7 +13,7 @@
         <title>Luo uusi tunnus</title>
     </head>
     <h1>Luo tunnus:</h1>
-        <form:form commandName="create" action="${pageContext.request.contextPath}/register" method="POST">
+        <form:form commandName="createuser" action="${pageContext.request.contextPath}/register" method="POST">
             Nimi: <form:input path="name" /><form:errors path="name" /> <br />
             Käyttäjätunnus: <form:input path="username" /><form:errors path="username" /> <br />
             Salasana: <form:input path="password" /><form:errors path="password" /><br />
