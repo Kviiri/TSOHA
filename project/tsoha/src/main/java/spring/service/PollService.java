@@ -6,6 +6,7 @@ package spring.service;
 
 import java.util.List;
 import spring.domain.Poll;
+import spring.domain.User;
 
 /**
  *
@@ -17,4 +18,6 @@ public interface PollService {
     public Poll findOne(Long id);
     public void remove(Poll p);
     public List<Poll> list();
+    
+    public boolean vote(User u, Long optionId);
 }

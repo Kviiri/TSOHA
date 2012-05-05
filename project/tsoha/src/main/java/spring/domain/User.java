@@ -7,10 +7,10 @@ import javax.persistence.*;
 
 @Entity(name = "USERS")
 public class User implements Serializable {
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade={CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Vote> votes;
     
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author", cascade=CascadeType.PERSIST)
     private List<Poll> polls;
 
     @Id
@@ -25,7 +25,7 @@ public class User implements Serializable {
     private Date memberSince;
 
    
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy="users", cascade = CascadeType.ALL)
     private List<Role> roles;
 
     public Long getId() {

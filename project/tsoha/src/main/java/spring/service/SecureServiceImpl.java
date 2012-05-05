@@ -41,13 +41,10 @@ public class SecureServiceImpl implements SecureService {
 
 
         List<Role> roles = new ArrayList();
-
-        Role role = new Role();
-        role.setRolename("admin");
-        roles.add(role);
-        role = new Role();
-        role.setRolename("user");
-        roles.add(role);
+        roles.add(PollUserDetailsServiceImplementation.getAdminRole());
+        
+        roles.add(PollUserDetailsServiceImplementation.getUserRole());
+        
         
         matti.setRoles(roles);
     }

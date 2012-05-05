@@ -24,6 +24,6 @@
     
     <!-- käyttäjät kannasta -->
     <authentication-manager>
-        <authentication-provider user-service-ref="pollUserDetailsService" />
+        <authentication-provider user-service-ref="pollUserDetailsServiceImplementation" />
     </authentication-manager>
 </beans:beans>

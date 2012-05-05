@@ -4,7 +4,10 @@
  */
 package spring.domain.form;
 
+import java.util.List;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.util.AutoPopulatingList;
 
@@ -14,16 +17,17 @@ import org.springframework.util.AutoPopulatingList;
  */
 public class CreatePollForm {
     @NotNull
-    @NotEmpty
+    @Size(min=1, max=200, message="Kysymyksen täytyy olla 1-200 merkkiä")
+    @Pattern(regexp="[a-zåäöA-ZÅÄÖ0-9]+", message="Kysymys saa sisältää vain kirjaimia ja numeroita.")
     String pollQuestion;
     @NotNull
-    AutoPopulatingList<String> pollOptions;
+    List<String> pollOptions;
 
-    public AutoPopulatingList<String> getPollOptions() {
+    public List<String> getPollOptions() {
         return pollOptions;
     }
 
-    public void setPollOptions(AutoPopulatingList<String> pollOptions) {
+    public void setPollOptions(List<String> pollOptions) {
         this.pollOptions = pollOptions;
     }
 

@@ -3,25 +3,28 @@ package spring.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import spring.domain.Poll;
 import spring.domain.PollOption;
+import spring.domain.form.CreatePollForm;
 import spring.domain.form.QuickAndDirtyCreatePollForm;
 import spring.repository.PollRepository;
 import spring.repository.UserRepository;
 import spring.service.PollService;
-import spring.service.PollUserDetailsService;
+import spring.service.PollUserDetailsServiceImplementation;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
-    PollUserDetailsService uServ;
+    PollUserDetailsServiceImplementation uServ;
     
     @Autowired
     PollService pServ;
@@ -38,24 +41,17 @@ public class UserController {
     }
     
     @RequestMapping(value = "addpoll", method = RequestMethod.POST) 
-    public String createPoll(@ModelAttribute QuickAndDirtyCreatePollForm cpf) {
+    public String createPoll(@Valid @ModelAttribute CreatePollForm cpf) {
         List<PollOption> options = new ArrayList<PollOption>();
-        PollOption p1 = new PollOption();
-        PollOption p2 = new PollOption();
-        PollOption p3 = new PollOption();
-        PollOption p4 = new PollOption();
-        p1.setOptionDescription(cpf.getPollOption1());
-        p2.setOptionDescription(cpf.getPollOption2());
-        p3.setOptionDescription(cpf.getPollOption3());
-        p4.setOptionDescription(cpf.getPollOption4());
-        options.add(p1);
-        options.add(p2);
-        options.add(p3);
-        options.add(p4);
-        
-        
         
         Poll p = new Poll();
+        for(String s : cpf.getPollOptions()) {
+            PollOption po = new PollOption();
+            po.setOptionDescription(s);
+            options.add(po);
+            po.setPoll(p);
+        }
+        
         p.setPollOptions(options);
         p.setTitle(cpf.getPollQuestion());
         pServ.saveOrUpdate(p, p.getId());

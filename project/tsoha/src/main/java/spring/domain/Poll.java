@@ -12,7 +12,7 @@ import javax.persistence.*;
  */
 @Entity(name = "POLLS")
 public class Poll implements Serializable {
-    @OneToMany(cascade={CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy="poll", cascade={CascadeType.REMOVE, CascadeType.PERSIST})
     private List<PollOption> pollOptions;
     
     @Id

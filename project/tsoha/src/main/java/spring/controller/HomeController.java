@@ -1,6 +1,7 @@
 package spring.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import spring.domain.Poll;
 import spring.domain.Role;
 import spring.domain.User;
+import spring.domain.Vote;
 import spring.domain.form.CreateUserForm;
 import spring.repository.UserRepository;
 import spring.service.PollService;
@@ -77,18 +80,24 @@ public class HomeController {
     
     @RequestMapping(value = "createuser", method = RequestMethod.POST)
     public String addUser(@Valid @ModelAttribute("userForm") CreateUserForm userForm, BindingResult result) {
-        result = userForm.validateForm(result);
+        userForm.validatePasswordEqualsConfirmedPassword(result);
         if (result.hasErrors()) {
             return "register";
         }
         User user = new User();
         user.setName(userForm.getName());
         user.setUsername(userForm.getUsername());
+        user.setPassword(userForm.getPassword());
         Role role = new Role();
         role.setRolename("user");
         List<Role> list = new ArrayList<Role>();
         list.add(role);
         user.setRoles(list);
+        user.setMemberSince(new Date(System.currentTimeMillis()));
+        List<Poll> polls = new ArrayList<Poll>();
+        user.setPolls(polls);
+        List<Vote> votes = new ArrayList<Vote>();
+        user.setVotes(votes);
         urepo.save(user);
         return "redirect:/home";
     }

@@ -14,10 +14,10 @@
     <body>
         <h1><form action="addpoll" method="POST">
             Otsikko: <input type="text" name="PollQuestion" /> <br />
-            Vastausvaihtoehto 1: <input type="text" name="pollOption1" /> <br />
-            Vastausvaihtoehto 2: <input type="text" name="pollOption2" /> <br />
-            Vastausvaihtoehto 3: <input type="text" name="pollOption3" /> <br />
-            Vastausvaihtoehto 4: <input type="text" name="pollOption4" /> <br />
+            Vastausvaihtoehto 1: <input type="text" name="pollOptions" /> <br />
+            Vastausvaihtoehto 2: <input type="text" name="pollOptions" /> <br />
+            Vastausvaihtoehto 3: <input type="text" name="pollOptions" /> <br />
+            Vastausvaihtoehto 4: <input type="text" name="pollOptions" /> <br />
             <input type="submit" value="Lähetä" />
         </form></h1>
     </body>

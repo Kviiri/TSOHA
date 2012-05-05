@@ -11,7 +11,7 @@ public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     private String rolename;
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany
     private List<User> users;
 
     public Long getId() {
@@ -36,5 +36,5 @@ public class Role implements Serializable {
 
     public void setRolename(String rolename) {
         this.rolename = rolename;
-    }
+    }    
 }

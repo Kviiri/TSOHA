@@ -5,10 +5,12 @@
 package spring.domain.form;
 
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
 /**
@@ -16,11 +18,20 @@ import org.springframework.validation.ObjectError;
  * @author kviiri
  */
 public class CreateUserForm {
-
-    public static Pattern alphaNumericValidationPattern = Pattern.compile("[a-zåäöA-ZÅÄÖ0-9]*");
     
+    @NotNull(message="Nimi ei saa olla tyhjä.")
+    @Pattern(regexp="\\w+", message="Nimessä saa olla vain numeroita ja kirjaimia.")
+    @Size(min=5, max=30, message="Nimen täytyy olla 5-30 merkkiä.")
     private String name;
+    
+    @NotNull(message="Käyttäjänimi ei saa olla tyhjä.")
+    @Pattern(regexp="\\w+", message="Käyttäjätunnuksessa saa olla vain numeroita ja kirjaimia.")
+    @Size(min=5, max=16, message="Käyttäjätunnuksessa täytyy olla 5-16 merkkiä.")
     private String username;
+    
+    @NotNull(message="Salasana ei saa olla tyhjä.")
+    @Pattern(regexp="\\w+", message="Salasanassa saa olla vain numeroita ja kirjaimia.")
+    @Size(min=8, max=16, message="Salasanassa täytyy olla 8-16 merkkiä.")
     private String password;
     private String confirmPassword;
 
@@ -57,52 +68,11 @@ public class CreateUserForm {
     }
     
     
-    public BindingResult validateForm(BindingResult result) {
-        validatePasswordEqualsConfirmedPassword(result);
-        validateName(result);
-        validateUserName(result);
-        validatePassword(result);
-        
-        return result;
-    }
     
-    private BindingResult validatePasswordEqualsConfirmedPassword(BindingResult result) {
+    public void validatePasswordEqualsConfirmedPassword(BindingResult result) {
         if(!password.equals(confirmPassword)) {
-            result.addError(new ObjectError("password", "Salasanasi ja varmistustekstisi eivät täsmänneet!"));
+            result.addError(new FieldError("userForm", "confirmPassword", "Salasanasi ja varmistustekstisi eivät täsmänneet!"));
         }
-        return result;
     }
     
-    private BindingResult validateName(BindingResult result) {
-        if(name.length() < 3 || name.length() > 30) {
-            result.addError(new ObjectError("name", "Nimessä täytyy olla 3-30 merkkiä."));
-        }
-        Matcher m = alphaNumericValidationPattern.matcher(name);
-        if(!m.matches()) {
-            result.addError(new ObjectError("name", "Nimessä saa olla vain kirjaimia ja numeroita."));
-        }
-        return result;
-    }
-    
-    private BindingResult validateUserName(BindingResult result) {
-        if(name.length() < 3 || name.length() > 30) {
-            result.addError(new ObjectError("username", "Käyttäjätunnuksessa täytyy olla 3-30 merkkiä."));
-        }
-        Matcher m = alphaNumericValidationPattern.matcher(name);
-        if(!m.matches()) {
-            result.addError(new ObjectError("username", "Käyttäjätunnuksessa saa olla vain kirjaimia ja numeroita."));
-        }
-        return result;
-    }
-    
-    private BindingResult validatePassword(BindingResult result) {
-        if(password.length() < 5 || password.length() > 30) {
-            result.addError(new ObjectError("password", "Salasanassa täytyy olla 5-30 merkkiä."));
-        }
-        Matcher m = alphaNumericValidationPattern.matcher(name);
-        if(!m.matches()) {
-            result.addError(new ObjectError("password", "Salasanassa saa olla vain kirjaimia ja numeroita."));
-        }
-        return result;
-    }
 }

@@ -15,12 +15,14 @@
     <body>
         <a href="${pageContext.request.contextPath}/home">Takaisin etusivulle</a>
         
+        <b>${voteMessage}</b>
         <h1>Kyselyt:</h1>
         <c:forEach var="poll" items="${polls}">
             <h3>${poll.title} (${poll.numOfAnswers} vastausta)</h3>
             <ul>
             <c:forEach var="pollOption" items="${poll.pollOptions}">
-                <li>${pollOption.optionDescription}, ${pollOption.numOfVotes} ääntä</li>
+                <li>${pollOption.optionDescription}, ${pollOption.numOfVotes} ääntä <sec:authorize access="hasRole('user')">
+                        <a href="${pageContext.request.contextPath}/poll/vote/${pollOption.id}"><i>Anna ääni!</i></a></sec:authorize></li>
             </c:forEach>
             </ul>
         </c:forEach>
