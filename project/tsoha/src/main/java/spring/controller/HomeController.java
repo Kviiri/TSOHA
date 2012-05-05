@@ -19,6 +19,7 @@ import spring.domain.Vote;
 import spring.domain.form.CreateUserForm;
 import spring.repository.UserRepository;
 import spring.service.PollService;
+import spring.service.PollUserDetailsServiceImplementation;
 import spring.service.SecureService;
 
 @Controller
@@ -88,10 +89,8 @@ public class HomeController {
         user.setName(userForm.getName());
         user.setUsername(userForm.getUsername());
         user.setPassword(userForm.getPassword());
-        Role role = new Role();
-        role.setRolename("user");
         List<Role> list = new ArrayList<Role>();
-        list.add(role);
+        list.add(PollUserDetailsServiceImplementation.getUserRole());
         user.setRoles(list);
         user.setMemberSince(new Date(System.currentTimeMillis()));
         List<Poll> polls = new ArrayList<Poll>();

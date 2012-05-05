@@ -37,7 +37,6 @@ public class SecureServiceImpl implements SecureService {
         matti.setUsername("matti");
         matti.setName("Macho Luukkandez");
         matti.setPassword("bonus");
-        matti = userRepository.save(matti);
 
 
         List<Role> roles = new ArrayList();
@@ -47,5 +46,7 @@ public class SecureServiceImpl implements SecureService {
         
         
         matti.setRoles(roles);
+        
+        userRepository.save(matti);
     }
 }
