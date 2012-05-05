@@ -13,7 +13,9 @@
         
         <p><a href="user/home">Käyttäjän sivu</a></p>
         <p><a href="admin/home">Ylläpitäjän sivu</a></p>
-            
+        
+        <p><a href="createuser">Luo uusi käyttäjä</a></p>
+        
         <p><a href="<c:url value="/j_spring_security_logout" />" > Logout</a></p>
     </body>
 </html>

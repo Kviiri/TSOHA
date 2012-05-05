@@ -14,6 +14,9 @@ public class SecureServiceImpl implements SecureService {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private PollUserDetailsService userv;
 
     @Override
     public void executeOnlyIfAuthenticatedAsAdmin() {
@@ -40,8 +43,8 @@ public class SecureServiceImpl implements SecureService {
 
 
         List<Role> roles = new ArrayList();
-        roles.add(PollUserDetailsServiceImplementation.getAdminRole());
-        roles.add(PollUserDetailsServiceImplementation.getUserRole());
+        roles.add(userv.getAdminRole());
+        roles.add(userv.getUserRole());
         
         
         matti.setRoles(roles);

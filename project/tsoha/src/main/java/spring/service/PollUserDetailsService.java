@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
+import spring.domain.Role;
 import spring.domain.User;
 
 /**
@@ -21,5 +22,8 @@ public interface PollUserDetailsService extends UserDetailsService {
 
     @Transactional
     User simpleLoadUserByUsername(String username);
+    
+    Role getUserRole();
+    Role getAdminRole();
     
 }

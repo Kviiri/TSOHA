@@ -35,7 +35,7 @@ public class PollController {
             model.addAttribute("voteMessage", "Sinun pitää kirjautua sisään jotta voit äänestää.");
         } else {
             User u = userv.simpleLoadUserByUsername(principal.getName());
-            if (u == null || !u.getRoles().contains(PollUserDetailsServiceImplementation.getUserRole())) {
+            if (u == null || !u.getRoles().contains(userv.getUserRole())) {
                 model.addAttribute("voteMessage", "Käyttöoikeutesi eivät riitä äänestämiseen.");
             } else {
                 if (pserv.vote(u, optionID)) {

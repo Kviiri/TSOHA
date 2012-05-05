@@ -19,6 +19,7 @@ import spring.domain.Vote;
 import spring.domain.form.CreateUserForm;
 import spring.repository.UserRepository;
 import spring.service.PollService;
+import spring.service.PollUserDetailsService;
 import spring.service.PollUserDetailsServiceImplementation;
 import spring.service.SecureService;
 
@@ -31,7 +32,9 @@ public class HomeController {
     @Autowired
     SecureService secureService;
     @Autowired
-    PollService pServ;
+    PollService pserv;
+    @Autowired
+    PollUserDetailsService userv;
     
     @RequestMapping(value = "login", method=RequestMethod.GET)
     public String login() {
@@ -69,7 +72,7 @@ public class HomeController {
     
     @RequestMapping(value = "listpolls")
     public String listPolls(Model model) {
-        model.addAttribute("polls", pServ.list());
+        model.addAttribute("polls", pserv.list());
         return "listing/listpolls";
     }
     
@@ -90,7 +93,7 @@ public class HomeController {
         user.setUsername(userForm.getUsername());
         user.setPassword(userForm.getPassword());
         List<Role> list = new ArrayList<Role>();
-        list.add(PollUserDetailsServiceImplementation.getUserRole());
+        list.add(userv.getUserRole());
         user.setRoles(list);
         user.setMemberSince(new Date(System.currentTimeMillis()));
         List<Poll> polls = new ArrayList<Poll>();

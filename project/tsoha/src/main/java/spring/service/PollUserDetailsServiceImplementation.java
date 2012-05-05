@@ -19,13 +19,15 @@ public class PollUserDetailsServiceImplementation implements PollUserDetailsServ
 
     
     
-    public static Role getAdminRole() {
+    @Override
+    public Role getAdminRole() {
         Role adminRole = new Role();
         adminRole.setRolename("admin");
         return adminRole;
     }
     
-    public static Role getUserRole() {
+    @Override
+    public Role getUserRole() {
         Role userRole = new Role();
         userRole.setRolename("user");
         return userRole;
