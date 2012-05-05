@@ -19,6 +19,9 @@ public class PollOption implements Serializable {
     
     @ManyToOne
     private Poll poll;
+    
+    
+    private String optionDescription;
 
     public Poll getPoll() {
         return poll;
@@ -28,8 +31,6 @@ public class PollOption implements Serializable {
         this.poll = poll;
     }
     
-    private String optionDescription;
-
     public Long getId() {
         return id;
     }

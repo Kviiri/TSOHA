@@ -20,37 +20,47 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// This text will be stored with each diagram;  use it for notes.</help_text><zoom_level>10</zoom_level><element><type>com.umlet.element.base.Class</type><coordinates><x>100</x><y>260</y><w>210</w><h>110</h></coordinates><panel_attributes>Käyttäjä
+// This text will be stored with each diagram;  use it for notes.</help_text><zoom_level>10</zoom_level><element><type>com.umlet.element.base.Class</type><coordinates><x>190</x><y>270</y><w>210</w><h>130</h></coordinates><panel_attributes>User
+--
+_-id_
+-username
+-name
+-password
+-roles
+-memberSince</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>370</x><y>450</y><w>240</w><h>160</h></coordinates><panel_attributes>Poll
 --
 _-id: integer_
--username: string
--password: string
--oikeudet: ?</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>200</x><y>470</y><w>240</w><h>160</h></coordinates><panel_attributes>Kysely
+-author
+-title
+-pollOptions
+-startTime
+-endTime</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>680</x><y>290</y><w>240</w><h>90</h></coordinates><panel_attributes>PollOption
 --
-_-id: integer_
--tekijä: references Käyttäjä.id
--otsikko: string
--alkamisaika: datetime
--päättymisaika: datetime</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>590</x><y>280</y><w>240</w><h>90</h></coordinates><panel_attributes>Vastausvaihtoehto
+_-id_
+-poll
+-optionDescription</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>420</x><y>80</y><w>200</w><h>110</h></coordinates><panel_attributes>Vote
 --
-_-id: integer_
--kysely: references Kysely.id
--nimi: string</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Class</type><coordinates><x>240</x><y>30</y><w>390</w><h>160</h></coordinates><panel_attributes>Ääni
---
-_-id: integer_
--käyttäjä: references Käyttäjä.id
--vastausvaihtoehto: references vastausvaihtoehto.id
--jättöaika: datetime (timestamp)</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>130</x><y>340</y><w>120</w><h>150</h></coordinates><panel_attributes>lt=-
+_-id_
+-user
+-pollOption
+-voteTime</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>220</x><y>370</y><w>200</w><h>100</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
-luo&gt;</panel_attributes><additional_attributes>30;30;100;130</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>280</x><y>290</y><w>330</w><h>70</h></coordinates><panel_attributes>lt=-
+luo&gt;</panel_attributes><additional_attributes>30;30;180;80</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>370</x><y>300</y><w>330</w><h>70</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
-äänestää&gt;</panel_attributes><additional_attributes>30;50;310;50</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>520</x><y>160</y><w>210</w><h>140</h></coordinates><panel_attributes>lt=-
+äänestää&gt;</panel_attributes><additional_attributes>30;50;310;50</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>590</x><y>160</y><w>230</w><h>150</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-&lt;liittyy</panel_attributes><additional_attributes>30;30;190;120</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>410</x><y>340</y><w>220</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=n</panel_attributes><additional_attributes>30;160;200;30</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>120</x><y>160</y><w>210</w><h>120</h></coordinates><panel_attributes>lt=-
+&lt;liittyy</panel_attributes><additional_attributes>30;30;210;130</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>580</x><y>350</y><w>140</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=n</panel_attributes><additional_attributes>30;130;120;30</additional_attributes></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>210</x><y>160</y><w>300</w><h>130</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=*
-äänestää&gt;</panel_attributes><additional_attributes>30;100;190;30</additional_attributes></element></umlet_diagram>
+äänestää&gt;</panel_attributes><additional_attributes>30;110;280;30</additional_attributes></element><element><type>com.umlet.element.base.Class</type><coordinates><x>50</x><y>110</y><w>170</w><h>90</h></coordinates><panel_attributes>Role
+--
+_-id_
+-rolename
+-user</panel_attributes><additional_attributes/></element><element><type>com.umlet.element.base.Relation</type><coordinates><x>70</x><y>170</y><w>170</w><h>120</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+kuuluu&gt;</panel_attributes><additional_attributes>30;30;150;100</additional_attributes></element></umlet_diagram>
