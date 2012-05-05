@@ -16,8 +16,8 @@
         <form:form commandName="userForm" action="${pageContext.request.contextPath}/createuser" method="POST">
             Nimi: <form:input path="name" /><form:errors path="name" /> <br />
             Käyttäjätunnus: <form:input path="username" /><form:errors path="username" /> <br />
-            Salasana: <form:input path="password" /><form:errors path="password" /><br />
-            Varmista salasana: <form:input path="confirmPassword" /><form:errors path="confirmPassword" /><br />
+            Salasana: <form:password path="password" /><form:errors path="password" /><br />
+            Varmista salasana: <form:password path="confirmPassword" /><form:errors path="confirmPassword" /><br />
             <input type="submit"/>
         </form:form>
 </html>
