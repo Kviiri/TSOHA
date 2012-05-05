@@ -23,23 +23,27 @@ import spring.service.PollUserDetailsServiceImplementation;
 @Controller
 @RequestMapping("/poll")
 public class PollController {
+
     @Autowired
     PollService pserv;
-    
     @Autowired
     PollUserDetailsService userv;
-    
+
     @RequestMapping("vote/{optionID}")
     public String vote(@PathVariable Long optionID, Principal principal, Model model) {
-        User u = userv.simpleLoadUserByUsername(principal.getName());
-        if(u == null || !u.getRoles().contains(PollUserDetailsServiceImplementation.getUserRole())) {
+        if (principal == null) {
             model.addAttribute("voteMessage", "Sinun pitää kirjautua sisään jotta voit äänestää.");
-        }
-        if(pserv.vote(u, optionID)) {
-            model.addAttribute("voteMessage", "Äänesi on rekisteröity!");
-        }
-        else {
-            model.addAttribute("voteMessage", "Olet jo äänestänyt tähän kyselyyn.");
+        } else {
+            User u = userv.simpleLoadUserByUsername(principal.getName());
+            if (u == null || !u.getRoles().contains(PollUserDetailsServiceImplementation.getUserRole())) {
+                model.addAttribute("voteMessage", "Käyttöoikeutesi eivät riitä äänestämiseen.");
+            } else {
+                if (pserv.vote(u, optionID)) {
+                    model.addAttribute("voteMessage", "Äänesi on rekisteröity!");
+                } else {
+                    model.addAttribute("voteMessage", "Olet jo äänestänyt tähän kyselyyn.");
+                }
+            }
         }
         return "redirect:/listpolls";
     }

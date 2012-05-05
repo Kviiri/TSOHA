@@ -15,6 +15,7 @@ import spring.domain.User;
 import spring.domain.Vote;
 import spring.repository.PollOptionRepository;
 import spring.repository.PollRepository;
+import spring.repository.UserRepository;
 
 /**
  *
@@ -24,10 +25,13 @@ import spring.repository.PollRepository;
 public class PollServiceImpl implements PollService {
 
     @Autowired
-    PollRepository repo;
+    private PollRepository repo;
     
     @Autowired
-    PollOptionRepository optionrepo;
+    private PollOptionRepository optionrepo;
+    
+    @Autowired
+    private UserRepository urepo;
     
     @Override
     @Transactional
@@ -70,6 +74,7 @@ public class PollServiceImpl implements PollService {
         PollOption voteTarget = optionrepo.findOne(optionID);
         Poll p = voteTarget.getPoll();
         for(Vote v : u.getVotes()) {
+            System.out.println("VOTE VISITED!");
             if(v.getOption().getPoll().getId().equals(p.getId())) {
                 return false;
             }
@@ -80,6 +85,8 @@ public class PollServiceImpl implements PollService {
         v.setVoteTime(new Date(System.currentTimeMillis()));
         voteTarget.addVote(v);
         saveOrUpdate(p, p.getId());
+        u.getVotes().add(v);
+        urepo.saveAndFlush(u);
         return true;
     }
 }
