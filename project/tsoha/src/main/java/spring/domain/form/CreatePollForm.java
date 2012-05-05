@@ -5,8 +5,9 @@
 package spring.domain.form;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.util.AutoPopulatingList;
@@ -18,7 +19,7 @@ import org.springframework.util.AutoPopulatingList;
 public class CreatePollForm {
     @NotNull
     @Size(min=1, max=200, message="Kysymyksen täytyy olla 1-200 merkkiä")
-    @Pattern(regexp="[a-zåäöA-ZÅÄÖ0-9]+", message="Kysymys saa sisältää vain kirjaimia ja numeroita.")
+    @javax.validation.constraints.Pattern(regexp="[a-zåäöA-ZÅÄÖ0-9]+", message="Kysymys saa sisältää vain kirjaimia ja numeroita.")
     String pollQuestion;
     @NotNull
     List<String> pollOptions;
@@ -37,6 +38,15 @@ public class CreatePollForm {
 
     public void setPollQuestion(String pollQuestion) {
         this.pollQuestion = pollQuestion;
+    }
+    
+    public boolean validatePollOptions() {
+        Pattern p = Pattern.compile("[a-zåäöA-ZÅÄÖ0-9]+");
+        for(String s : pollOptions) {
+            Matcher m = p.matcher(s);
+            if(!m.matches()) return false;
+        }
+        return true;
     }
     
 }

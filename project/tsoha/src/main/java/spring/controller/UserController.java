@@ -37,7 +37,12 @@ public class UserController {
     }
     
     @RequestMapping(value = "addpoll", method = RequestMethod.POST) 
-    public String createPoll(@Valid @ModelAttribute CreatePollForm cpf) {
+    public String createPoll(@Valid @ModelAttribute CreatePollForm cpf, Model model) {
+        if(!cpf.validatePollOptions()) {
+            model.addAttribute("voteMessage", "Syötteessäsi oli virhe, joten kyselyä ei lisätty.<br/>"
+                    + "Kyselyt saavat sisältää vain isoja ja pieniä kirjaimia sekä numeroita.");
+            return "listing/listpolls";
+        }
         List<PollOption> options = new ArrayList<PollOption>();
         
         Poll p = new Poll();
@@ -51,6 +56,7 @@ public class UserController {
         p.setPollOptions(options);
         p.setTitle(cpf.getPollQuestion());
         pServ.saveOrUpdate(p, p.getId());
-        return "redirect:home";
+        model.addAttribute("voteMessage", "Kyselysi on lisätty!");
+        return "listing/listpolls";
     }
 }
