@@ -34,9 +34,7 @@ public class PollController {
         if (principal == null) {
             model.addAttribute("voteMessage", "Sinun pitää kirjautua sisään jotta voit äänestää.");
         } else {
-            System.out.println(principal.toString());
             User u = userv.simpleLoadUserByUsername(principal.getName());
-            System.out.println(u.getRoles());
             if (u == null || !u.getRoles().contains(PollUserDetailsServiceImplementation.getUserRole())) {
                 model.addAttribute("voteMessage", "Käyttöoikeutesi eivät riitä äänestämiseen.");
             } else {
@@ -47,6 +45,7 @@ public class PollController {
                 }
             }
         }
-        return "redirect:/listpolls";
+        model.addAttribute("polls", pserv.list());
+        return "listing/listpolls";
     }
 }

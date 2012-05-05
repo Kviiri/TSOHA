@@ -15,7 +15,7 @@
             </goals>
             <properties>
                 <netbeans.deploy.debugmode>true</netbeans.deploy.debugmode>
-                <netbeans.deploy>true</netbeans.deploy>
+                
                 <jpda.listen>maven</jpda.listen>
             </properties>
         </action>

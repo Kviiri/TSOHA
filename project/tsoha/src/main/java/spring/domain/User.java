@@ -25,7 +25,7 @@ public class User implements Serializable {
     private Date memberSince;
 
    
-    @ManyToMany(mappedBy="users", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
     private List<Role> roles;
 
     public Long getId() {

@@ -74,7 +74,6 @@ public class PollServiceImpl implements PollService {
         PollOption voteTarget = optionrepo.findOne(optionID);
         Poll p = voteTarget.getPoll();
         for(Vote v : u.getVotes()) {
-            System.out.println("VOTE VISITED!");
             if(v.getOption().getPoll().getId().equals(p.getId())) {
                 return false;
             }

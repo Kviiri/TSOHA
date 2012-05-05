@@ -14,7 +14,7 @@
     </head>
     <body>
         <a href="${pageContext.request.contextPath}/home">Takaisin etusivulle</a>
-        
+        <hr/>
         <b>${voteMessage}</b>
         <h1>Kyselyt:</h1>
         <c:forEach var="poll" items="${polls}">

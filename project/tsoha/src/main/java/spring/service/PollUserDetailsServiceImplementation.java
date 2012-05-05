@@ -17,24 +17,17 @@ import spring.repository.UserRepository;
 @Service
 public class PollUserDetailsServiceImplementation implements PollUserDetailsService {
 
-    private static final Role adminRole;
-    private static final Role userRole;
     
-    static {
-        adminRole = new Role();
-        adminRole.setRolename("admin");
-        adminRole.setUsers(new ArrayList<User>());
-        
-        userRole = new Role();
-        userRole.setRolename("user");
-        userRole.setUsers(new ArrayList<User>());
-    }
     
     public static Role getAdminRole() {
+        Role adminRole = new Role();
+        adminRole.setRolename("admin");
         return adminRole;
     }
     
     public static Role getUserRole() {
+        Role userRole = new Role();
+        userRole.setRolename("user");
         return userRole;
     }
     

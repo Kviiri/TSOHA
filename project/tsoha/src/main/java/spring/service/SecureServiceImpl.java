@@ -41,7 +41,6 @@ public class SecureServiceImpl implements SecureService {
 
         List<Role> roles = new ArrayList();
         roles.add(PollUserDetailsServiceImplementation.getAdminRole());
-        
         roles.add(PollUserDetailsServiceImplementation.getUserRole());
         
         
