@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,11 +38,10 @@ public class UserController {
     }
     
     @RequestMapping(value = "addpoll", method = RequestMethod.POST) 
-    public String createPoll(@Valid @ModelAttribute CreatePollForm cpf, Model model) {
-        if(!cpf.validatePollOptions()) {
-            model.addAttribute("voteMessage", "Syötteessäsi oli virhe, joten kyselyä ei lisätty.<br/>"
-                    + "Kyselyt saavat sisältää vain isoja ja pieniä kirjaimia sekä numeroita.");
-            return "listing/listpolls";
+    public String createPoll(@Valid @ModelAttribute("pollForm") CreatePollForm cpf, BindingResult result, Model model) {
+        cpf.validatePollOptions(result);
+        if(result.hasErrors()) {
+            return "user/addpoll";
         }
         List<PollOption> options = new ArrayList<PollOption>();
         
@@ -57,6 +57,8 @@ public class UserController {
         p.setTitle(cpf.getPollQuestion());
         pServ.saveOrUpdate(p, p.getId());
         model.addAttribute("voteMessage", "Kyselysi on lisätty!");
+        
+        model.addAttribute("polls", pServ.list());
         return "listing/listpolls";
     }
 }
